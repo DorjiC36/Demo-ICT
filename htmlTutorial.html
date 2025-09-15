@@ -1,35 +1,75 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <Title>HTML Basics Demo</Title>
+        <Title>HTML basics Demo</Title>
         <style>
-            p{
-                color:green;
+            p {
+                color: green;
             }
-            table,
-             th,
-             td {
+               table,
+               th,
+               td {
                 border: 1px solid black;
                 border-collapse: collapse;
                 padding: 1em;
                 margin: 1em;
+               }
+            .header{
+                display: flex;
+                background-color: darkgreen;
+                color: white;
+
+                padding: 0 0 0 0.5vw;
+                gap: 1vw;
+                justify-content: center;
+                flex-wrap: wrap;
+
+            }
+            .item1 {
+                flex: 0 0 auto;
+                width: fit-content;
+
+            }
+
+            .item2 {
+                flex: 0 0 auto;
+            }
+            @media (max-width: 400px){
+                .header{
+                flex-direction: column;
+                justify-content: center;
+                }
             }
         </style>
-        <link rel="stylesheet" href="styles.css">
+        <link
+        rel="stylesheet"
+        href="style.css">
     </head>
-    
+
     <body>
-        <div class="header">
-            <h1 style="color:blue; text-align: center">Welcome to <span id="highlight"> HTML</span></h1h1>
-            </div>
-            <p>The concepts covered under this tutorial include:</p>
-            <ul>
-                <li>Introduction to HTML</li>
-                <li>HTML Elements and Tags</li>
-            </ul>
-        <p>This is a paragraph element. HTML uses tags to mark up content.</p>
-        <img src= "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAA+VBMVEX/////TB7/ZR7r6+sAAAD/SBX/c1T/WR7/PgDq8PH39/f/XQDNzc3/Qwfr7e7/Yhf1pJT/uaD/qIj/fk3uz8i0tLQdHR3Y2NhTU1P/WAD3kn78Z0j/6d+6urqDg4MpKSlgYGB6enr/XB7/OAAVFRXj4+P/YA//QwD/9/X/4Nr/8Ov4jHb/wrjs4N1YWFhGRkaoqKj/fGH/s6P/08r/nYn/h1b+WjT/yb3/2M/ztKjww7n/Ugr/eUT/pZL/kWb/VSv/bjD/m3j/hm83Nzeampp/f3/5gGb/x7L/1cTvzcf/YDz7dVfzt6v0qp/8ak3/u63/sZP/o4D/k22yAxqCAAAL+klEQVR4nO2de1vaSBTGgxIM0qC2Vldhe1ksAdRtvRStFansrrfWS/v9P8wmpoEEzjlkyDsx8vD+pXliws8ZZt6cc2ZiGGp6nQ/0MTi0+LZ/bD1yxqjee6ev9X/9ZzF05feD07zLGH/0f/1T8TMmE5Qw/2Zw4Reh06aIMP+hf+F/ppSwf5F/w6dNE2H+tX+N+chpU0W45Q82f08voT/Y/Bk9bboIvb8hDmWB8A8QofufejN0WkYIPxqLvuajhJ8UCfOvPwyflhHC/FagoY/2GzyE+l9wbJEi3Pp76EBmCAmth08dEL4JHx4hZC4zI9SlGWFIM8L8Vtht59fWopeZBsK18BNT/sUUEuaN/wZ/+s4Yusx0EIZ+Lk8n4eDJ3n2Kyhzh2vwHX+tR19ZXHELjnf+TZ3JZwo/vwvo3NcK3/Y+chHDR/2leIozqXWqEaxBC/9HwkzHFhF4/9R/EppZwPvizqSU0Pv0eO6aXMNCMcEYIUsjT9D/y1jjC9+HDi6NX8DU4/sL79eMTEc6/6Kt/bHBokT71Q+QSxBWoy6y/oLVuzDTTTDPNNNNMM80000zPUK1KIcuqtBITNmpmllVrJG9EK5dlWckBjadmGCMA4Y351BCCzAqAcC/ThHsAwm37qTEE2ZsAwk6mCTsAwn3nqTEEOfsAwp0sTxfWDoDwINOEBwDCau2pMQTVmgDCVqbbMLktdY0p+EMtJFXkagBbajTa0Cl/YS6h/gpdzGwjCI27bBGG29C8QwCCbRuWEGHa0LYNSmhvQwgPs0UYvph9CCHE2jYoIcS0oW0blBBi2tC2DUuIMG2G0cwwIcK0ucY0U7NFeMLPmVUIYQsJiCXMIWypZ9syS4gxbYZRQXbTpIQRS4OItHkqZJawACK8yCzhBYhwE2nbkhKGrwWJJXpaRto2JKGzDCKE2jYkIci0ibbNtFX1taSqJZ4QY9oM45glNHvLqtpfUdXnJZbwGERYZQnt26Kq1G9/XmcJMabNNTXsSGNvFucVtTj+fkOKtGHE0jggS2MYLKF5kQLhKU+IAuTTwGZBP2HjW5gwEi3twghZY2pW9BO2IkOpFlsqxRPbqoDqhNU6S4iJJXribVt3t6ybsFnihlKYaZNsm7mqnfB4gyOEmTbDuGcnREc/4SXbhtY9jPCIJbROtBM+8IRHMELetjlfVAdTZcKXvKVBmTYpDWwvayfkTVsNZdq86j2WUNm2KROesZYGUbUXiJ0tzJ52Qt60mThAg40nmnu6CQXT1gYSsmlgs6IIqE7IWxpMAtgXH21Ttm2qhK0NlrAHJBSibbuaCZuspQGaNql6z6KMKfIZ/4onRFTtBeLTwBZh28q3m7w6L9V0xkZpQAlgX3w8kbJtxU1LiLXV1SRE2lCxRE9qtq24LATJk8VLI4Q406Zq24q3QpAcSIgzbe6QzTaKfThKWP4hBMkTEUYsjY1Jj/4m7HIf2NwmCK9TIewiCRvskgTzO0G4q4swMuHfAI23ZNtuKEIh4YgjRKVHfQnVe4T13mU7NZIQF2nz1GMJLSqMIWT+ExGGLwSq2gvEV+/VCGNaFjL/OEJM1V4gNdtWFDL/MEKoaVO2bdspEEJNm5QGdn4QpkZYSYQjRCWAfTXZXurcqtk2XC/FVO0F4qv3SNt2wk/5SQh1VO0F4qv3qGhb+VpPG+qo2uuLN6ZEkrS8qmekidpSLCC/Vpa2bSxgIsKoLQUT8nN4l7Rt7PLyhSUl8YRYWyrZNiraVv5e4VR4paJIwFtfLNETb9tMtTSwWjTxmE8AY02bZNtstSSpGuEVSwg2bZJtc9SSpGqEK3x6FGvaxDQwYdtghEICGGvapHiiTdg2GKGQHsWaNtfUoJKkaoRnPCHY0hgGS6iYJFUjfMUngNGA/CYuVLQNRsgngBHbtkTFG9M7fYSpVO0F4qv3blQA1QhbvKXBVe0F4kMvarVtSoTVEkuINm0426ZEKCSA0aZNqt5Tq21TIkzRtEnVe9a1NkLBtOGq9gLxto2KtoEIU6naCyTYNqXaNiXCn2lU7QUSbBsRbQMR/krRtBkN3tQQSVIQYRpLLQaEHKC36KIcX0qEvGmDbNsyJD7aVllVUJUTcctGuI/qjbR54qNtpqUgZ4NWiSLkLc13DYRCtE1FTLx06ZS4ZUpVe4FAa2U5wjPililV7QUC7b3HENbPiVvypg1atRcItIkLR/iSuCW/1EKDLZVsG4KwtELcUrCleNMm2TYI4SVxS2GpBTrS5olPAyMIN66IW0YibVFLo4OwJcwWVJJJkZD6yMJCBLwtlar3cl1qG2oGkeullKeZYwmhVXt9CbZt1JgWV5lOzWVIqY/MT/g6TJu4955CGpgmXPpGOWmeELnUYiC+es9SqN5jCBVNG7ZqLxBvTGvUgyDTqRnCz8QNBdOGrdoLxMcTqUUXRaZT04T1X8QNBdOGjyV6Eqr3iGhbkenUDOFP4oYpmzbVtbJc9R5NWHogbpiyaROr96hFF0ynZggVTRs6AeyLt20qiy4YQuoj8+lRLabNMKr8ogtqSQKz6IIhpMKffKQNutRioAYfqCG2OCmfqLRhnTJtgi3VEGnzxAGSSdLyqsr3cIlqFD49inirBSV2U2iVRReMLyVuJ2xqglwBHJZQvTcC6No2+lSScOkbcTthUxN01V4gqXqPmBBz5Ok0IWVLm2kmgH0JaWBqSULBdOxRyFHCpXqpREXa+E1NNJk2ybY5VJK0uPtj+8Z2hiAXRuhOf16Rg3/qpk110YU72JSL86tfel0r3JQhwqXSxtz5JVuQnmLVXiAhDcxucVIuupTLBatPudCn2/i8Ipbbp27a3K/+hFuceJQnh5Xc49dy4bFrzp0+jE3ipli1FyhJ9Z5L6X0tHesr/8UbEh9L1JAA/q1k1XteU+5+2eS/eENKs2ovEG9M425xUo6/p4JQ04bctiUq3rbF3+IkdpZbMG16YomeeNvWjr0BSHzCdBPAvtRsW0LCKhtLtHWZNsm2OXhCYVMTXaZNqt6j1somJBRMG26vvWEJ1XuxF13EJky1ai/QJLZtYsJUq/YCibatHK8VYxM+gWkTX1DW3jzZLRZjQMYjbB2dR6bDaJm+NtMmpoFtK3e3vFocSxmD8Pjh1VypzhNqSQD7agj7XXh3tp3cxY/dsgg5hrB1eVYf3qR8mLCrKZboafybLkzHqhxeCx1WIGxcvTzdGGo8ytLgFyIM9D1ObZtpW92L21UGkiOsrpzNbdRHGo8i1GfaFKr3TMe82T6ZJygpwsbR+bcS3XgUoT7TpvYKNrcpLXfsGaYcIWw+eF2TazxistBStRdItXrPpWxvR8eeCGH18tfcxui4MoZQR9VeoPsJ6qJMy7zrXPebsk/YuPp5KndNhlCjaZu4es+bRva++AOsT1hd+bw0tmtyhPpMW6IXlJlOrX3o+h7fr8TqmhyhPtPmEiaronV9z17nVWkjZtccKJoe1UmY/AVl5le1xiMI0ZuaRDTGtsXRRDt/pGbahOo9vYQpRdo8JX8FW3JCnbYU8ebc5IR6qvYCJX9z7iSE0aFUT9VeoOSLLlQJ/1oYuoBW0zaZbUtAOIKX02zaEIsuYhNSdI+EOk0b4s258Qg5vJzGBLCv5G/OHU8o0D0S6jRtYjwRQjiG7pFQp2kzhC1OAIQx8HI6NjWJStdsEY/Ok74EsC82DZyEMD6exqq9QJUaUcmVhFCF7vE5WlfVXl8HhxXTStBXI4RqdO4DdGEZv5cCoepOr1sbrldTJlRsPMu62TzSPIyG1WguF2oTNeXCBHS25ezdYzdkjUd5tN11lJtyQQ3PdL8SNx29NkZUdX8vWnoIlelY7d5Oil2TVuOg45UewvG8rrnf1BqTUVBrp+dMPPYQMq1a7vAoK3SBmvt3OUSH9SaFJxlX4qh1tFmxrCSQtmUXOgdZa7yoqvc9ezLf4/qV7vbTjyuxdNy5sdQ6rJdsLOzrffIDq3XUa8edLL0pL3vjShw19/fGjj2mXev27p9V40XVODhs19ixx7ZqlU5mprzJ1dq5yI2unjEdxx1Xnj9doONOIdRhH6e85zWuxJE7Wd54vsf1K5XDg+cxKairer+X+pT3P5dX3Ei/CQGEAAAAAElFTkSuQmCC" alt= "HTML Logo" /> 
-        <a href ="Demo-ICT\next.html" >Next Page</a>
+         <div class="header">
+              <!--<h1 style="color:blue; text-align: center">Welcome to <span id="highlight">HTML</span></h1> -->
+              <div class="item1">
+                <h1>HTML</h1>
+              </div>
+              <div class="item2">
+                <h1>CSS</h1>
+              </div>
+         </div>
+        
+        <p> The concepts covered under this tutorial include:</p>
+        <ul>
+            <li>Introduction to HTML</li>
+            <li>HTML Elements and Tags</li>
+        </ul>
+
+        <p>This is a paragraph element. <b> HTML </b> uses tags to <i> mark up </i> content.</p>
+        <img src="data:image/png;base64,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" alt=""HTML Logo" />
+         <a href="https://www.w3schools.com/html/">Learn more about HTML</a>
+
+        <a href ="./Demo-ICT\next.html">Next Page</a>
+
+        
         <table>
             <caption>HTML Table Demo</caption>
             <tr>
@@ -42,9 +82,10 @@
             </tr>
             <tr>
                 <td>h1 to h6</td>
-                <td>Defines HTML heading</td>
+                <td>Defines HTML headings</td>
             </tr>
         </table>
-        <a href="form.html">HTML Form Demo</a>
+        <a href ="form.html">HTML form Demo</a>
+
     </body>
 </html>
